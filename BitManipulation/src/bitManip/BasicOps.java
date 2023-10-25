@@ -22,7 +22,6 @@ public class BasicOps {
 
 	
 	//Subtract two numbers without using mathematical operator
-	//Still Doubt full
 	public static int getsubtraction(int a, int b) {
 		
 		return getSum(a, -b);
@@ -43,10 +42,45 @@ public class BasicOps {
 		return b==0? a : getSum(a^b,(a&b)<<1);
 	}
 	
+	public static int getDivisionQuotient(int a, int b) {
+		if(a== Integer.MAX_VALUE && b==-1) return Integer.MAX_VALUE;
+        if(a< Integer.MIN_VALUE) return Integer.MIN_VALUE;
+        //if(a < b) return 0;
+        int ans =0;
+		int neg = a<0 || b<0 ? -1:1;
+		neg = a<0 && b<0 ? 1:neg;
+		a=Math.abs(a);
+		b= Math.abs(b);
+		System.out.println(a+"  "+b);
+        if(a == b) return neg;
+        if(a < b) return 0;
+        if(b==1) return neg*a;
+        
+		for(int i=highestPower(a, b);i>=0;i--) {
+			if((b<<i) <= a) {
+				a-= b<<i;
+				ans+= 1<<i;
+			}
+		}
+		
+		return neg*ans;
+	}
+	
+	private static int highestPower(int divisor, int dividend) {
+		int hp =0;
+		int halfDividend=dividend>>1;
+		while(halfDividend<divisor) {
+			hp++;
+			divisor = divisor<<1;
+		}
+		return hp;
+	}
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
+		System.out.println(Integer.MAX_VALUE);
 		System.out.println(getsubtraction(10, 5));
 		System.out.println(getSum(10, 5));
+		System.out.println(getDivisionQuotient(-2147483648, -1));
 	}
 
 }
