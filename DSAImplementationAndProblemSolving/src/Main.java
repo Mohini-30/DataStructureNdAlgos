@@ -1,5 +1,7 @@
 import Array.ArrayIO;
 import HeapImpl.MaxHeap;
+import Tree.TreeNode;
+import Tree.TreeTraversals;
 
 import java.util.ArrayList;
 
@@ -11,6 +13,8 @@ public class Main {
         ArrayList<Integer> ele = new ArrayList<>();
         for(int i=0;i<arr.length;i++)
             ele.add(arr[i]);
+        /*
+
         MaxHeap heap = new MaxHeap();
         heap.BuildHeap(ele);
         ArrayIO.printArray(ele);
@@ -21,5 +25,15 @@ public class Main {
         ArrayIO.printArray(heap.IncreaseKey(ele,5,10));
         ArrayIO.printArray(heap.DecreaseKey(ele,2,11));
         ArrayIO.printArray(heap.DecreaseKey(ele,2,4));
+
+         */
+
+        TreeNode root = TreeTraversals.inputTree();
+        TreeTraversals.preOrderTraversal(root);
+        TreeTraversals.postOrderTraversal(root);
+        TreeTraversals.inOrderTraversal(root);
+        TreeTraversals.inOrderTraversalWithLoop(root);
+        TreeTraversals.preOrderTraversalWithLoop(root);
+
     }
 }
