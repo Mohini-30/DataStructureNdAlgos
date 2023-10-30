@@ -66,6 +66,13 @@ public class MaxHeap {
         return arr;
     }
 
+    public ArrayList<Integer> updateKey(ArrayList<Integer> arr, int index, int val){
+        if(arr.get(index)>val)
+            return DecreaseKey(arr,index,val);
+        else
+            return IncreaseKey(arr,index,val);
+    }
+
     private void percolateUp(ArrayList<Integer> arr, int index){
         int i = index;
         while(i>=0 && arr.get(i/2) < arr.get(i)){
