@@ -27,7 +27,7 @@ public class TreeTraversals {
             if(root == null)
                 return;
             inOrderTraversal(root.left);
-            System.out.println(root.val+" ");
+            System.out.print(root.val+" ");
             inOrderTraversal(root.right);
         }
 
@@ -45,6 +45,7 @@ public class TreeTraversals {
                 System.out.print(curr.val +" ");
                 curr = curr.right;
             }
+            System.out.println();
         }
 
         public static void preOrderTraversalWithLoop(TreeNode root){
@@ -60,19 +61,25 @@ public class TreeTraversals {
                 curr =stk.pop();
                 curr=curr.right;
             }
+
+            System.out.println();
         }
 
         public static void postorderTraversalWithLoop(TreeNode root){
-            Stack<TreeNode> stk = new Stack<>();
+            Stack<TreeNode> stk1 = new Stack<>();
+            Stack<TreeNode> stk2 = new Stack<>();
             TreeNode curr = root;
-            while (curr!=null || !stk.isEmpty()){
-
-                while(curr!=null){
-                    stk.add(curr);
-                    curr=curr.left;
-                }
-
+            stk1.push(curr);
+            while (!stk1.isEmpty()){
+                curr=stk1.pop();
+                stk2.push(curr);
+                if(curr.left!=null) stk1.push(curr.left);
+                if(curr.right!=null) stk1.push(curr.right);
             }
+            while (!stk2.isEmpty()){
+                System.out.print(stk2.pop().val+" ");
+            }
+            System.out.println();
         }
 
         public static TreeNode inputTree(){

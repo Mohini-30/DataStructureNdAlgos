@@ -30,10 +30,16 @@ public class Main {
 
         TreeNode root = TreeTraversals.inputTree();
         TreeTraversals.preOrderTraversal(root);
+        System.out.println();
         TreeTraversals.postOrderTraversal(root);
+        System.out.println();
         TreeTraversals.inOrderTraversal(root);
+        System.out.println();
         TreeTraversals.inOrderTraversalWithLoop(root);
+        System.out.println();
         TreeTraversals.preOrderTraversalWithLoop(root);
+        System.out.println();
+        TreeTraversals.postorderTraversalWithLoop(root);
 
     }
 }
