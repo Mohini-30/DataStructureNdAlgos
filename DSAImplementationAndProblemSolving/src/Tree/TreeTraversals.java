@@ -82,15 +82,34 @@ public class TreeTraversals {
             System.out.println();
         }
 
+
+        public static void postOrderTraversalWithLoop2(TreeNode root){
+            Stack<TreeNode> stk = new Stack<>();
+            TreeNode curr = root;
+            while(curr!=null || !stk.isEmpty()){
+                while(curr!=null){
+                    if(curr.right!=null)  stk.push(curr.right);
+                    stk.push(curr);
+                    curr=curr.left;
+                }
+                curr=stk.pop();
+                if(curr.right != null && !stk.isEmpty() && stk.peek()==curr.right) {
+                    stk.pop();
+                    stk.push(curr);
+                    curr = curr.right;
+                    continue;
+                }
+                System.out.print(curr.val+" ");
+                curr=null;
+            }
+        }
         public static TreeNode inputTree(){
             Queue<TreeNode> temp = new ArrayDeque<>();
             System.out.println("Enter the root value(-1 represents null)");
             Scanner s = new Scanner(System.in);
             int n = s.nextInt();
-
             TreeNode root = new TreeNode(n);
             if(root.val!=-1) temp.add(root);
-
             while(!temp.isEmpty()){
                 TreeNode tempRoot = temp.poll();
                 TreeNode tempLeft = new TreeNode();

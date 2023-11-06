@@ -40,6 +40,8 @@ public class Main {
         TreeTraversals.preOrderTraversalWithLoop(root);
         System.out.println();
         TreeTraversals.postorderTraversalWithLoop(root);
+        System.out.println();
+        TreeTraversals.postOrderTraversalWithLoop2(root);
 
     }
 }
